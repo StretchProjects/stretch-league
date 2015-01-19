@@ -1,0 +1,69 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+core-scaffold {
+    position: absolute;
+    top : 0;
+    bottom : 0;
+    left : 0;
+    right : 0;
+    text-align: center;
+}
+
+paper-shadow.card {
+    display: inline-block;
+    background: white;
+    box-sizing: border-box;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 2px;
+    min-width: 50%;
+    max-height: 90%;
+}
+
+/* some default values for mode="cover" on core-scaffold */
+core-scaffold[mode=cover]::shadow core-header-panel::shadow #mainContainer {
+    left:12px;
+
+}
+
+core-scaffold[mode=cover] .content {
+    margin: 20px 100px 20px 0;
+}
+
+#league-table {
+    border-collapse: collapse;
+    border: 1px solid #41587c;
+    text-align: center;
+    width: 100%;
+}
+
+#league-table td, #league-table th {
+    padding: 6px;
+    border: 1px solid #41587c;
+    text-align: center;
+}
+
+#league-table th {
+    background-color: #41587c;
+    color: white;
+}
+
+#league-table tr:hover {
+    background-color: #edf1f6;
+}
+
+a {
+    color: #41587c;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #ff6600;
+}

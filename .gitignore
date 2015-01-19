@@ -1,0 +1,5 @@
+#Ignore all files in the meta folder
+meta/
+
+#ignore bower components directory
+bower_components/
