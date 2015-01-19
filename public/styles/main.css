@@ -24,7 +24,7 @@ paper-shadow.card {
     padding: 16px;
     border-radius: 2px;
     min-width: 50%;
-    max-height: 90%;
+    max-width: 90%;
 }
 
 /* some default values for mode="cover" on core-scaffold */
