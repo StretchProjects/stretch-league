@@ -37,26 +37,29 @@ core-scaffold[mode=cover] .content {
     margin: 20px 100px 20px 0;
 }
 
-#league-table {
+table.data {
     border-collapse: collapse;
     border: 1px solid #41587c;
     text-align: center;
     width: 100%;
 }
 
-#league-table td, #league-table th {
+table.data td, table.data th {
     padding: 6px;
     border: 1px solid #41587c;
     text-align: center;
 }
 
-#league-table th {
+table.data th {
     background-color: #41587c;
     color: white;
 }
 
-#league-table tr:hover {
+table.data tr:hover {
     background-color: #edf1f6;
+}
+table.fullwidth {
+    width: 100%;
 }
 
 a {
@@ -66,4 +69,34 @@ a {
 
 a:visited {
     color: #ff6600;
+}
+
+.leftalign {
+    text-align: left;
+}
+
+.centeralign {
+    text-align: center;
+}
+
+.teamlogo {
+    height: 150px;
+    width: 150px;
+    float: left;
+    margin-right: 8px;
+}
+
+select.teamselect {
+    height: 200px;
+    width: 150px;
+}
+
+button.centeraligned {
+    display: block;
+    margin: 16px auto;
+}
+
+
+p.score {
+    font-size: 3em;
 }

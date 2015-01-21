@@ -32,7 +32,7 @@
         <div tool>Current positions</div>
 
         <paper-shadow class="card" z="1">
-            <table id="league-table">
+            <table class="data">
                 <caption>Current positions as at 01/01/2015</caption>
                 <thead>
                     <tr>
