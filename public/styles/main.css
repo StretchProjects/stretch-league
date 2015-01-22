@@ -58,6 +58,7 @@ table.data th {
 table.data tr:hover {
     background-color: #edf1f6;
 }
+
 table.fullwidth {
     width: 100%;
 }
@@ -95,7 +96,6 @@ button.centeraligned {
     display: block;
     margin: 16px auto;
 }
-
 
 p.score {
     font-size: 3em;
