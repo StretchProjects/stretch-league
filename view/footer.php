@@ -1,1 +1,4 @@
-<p>Footer</p>
+</core-scaffold>
+
+    </body>
+</html>
