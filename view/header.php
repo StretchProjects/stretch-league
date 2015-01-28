@@ -27,5 +27,6 @@
                 <core-item icon="input" label="Team selection" tag="table" url="/team/selection"><a href="/team/selection"></a></core-item>
                 <core-item icon="create" label="Result input" tag="table" url="/results/input"><a href="/results/input"></a></core-item>
                 <core-item icon="create" label="Team profile" tag="table" url="/team/index"><a href="/team/index"></a></core-item>
+                <core-item icon="create" label="Top goalscorers" tag="table" url="/player/index"><a href="/player/index"></a></core-item>
             </core-menu>
         </core-header-panel>

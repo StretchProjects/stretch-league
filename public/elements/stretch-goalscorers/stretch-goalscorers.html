@@ -1,0 +1,72 @@
+<link rel="import" href="/bower_components/polymer/polymer.html"/>
+<link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
+
+
+<polymer-element name="stretch-goalscorers" attributes="goalscorers">
+
+    <template>
+        <style>
+            table.data {
+    border-collapse: collapse;
+    border: 1px solid #41587c;
+    text-align: center;
+    width: 100%;
+}
+
+table.data td, table.data th {
+    padding: 6px;
+    border: 1px solid #41587c;
+    text-align: center;
+}
+
+table.data th {
+    background-color: #41587c;
+    color: white;
+}
+
+table.data tr:hover {
+    background-color: #edf1f6;
+}
+paper-shadow {
+    display: inline-block;
+    background: white;
+    box-sizing: border-box;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 2px;
+    min-width: 50%;
+    max-width: 90%;
+}
+
+        </style>
+
+        <paper-shadow>
+            <table class="data">
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Team</th>
+                        <th>Goals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <template repeat="{{g in goalscorers}}">
+                    <tr>
+                        <td>{{g.player_name}}</td>
+                        <td>{{g.team_name}}</td>
+                        <td>{{g.goals}}</td>
+                    </tr>
+                </template>
+                </tbody>
+            </table>
+        </paper-shadow>
+    </template>
+
+    <script>
+        Polymer('stretch-goalscorers', {
+            ready: function() {
+                this.goalscorers = JSON.parse(decodeURIComponent(this.goalscorers));
+            }
+        });
+    </script>
+</polymer-element>
