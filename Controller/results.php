@@ -7,6 +7,7 @@ class results extends Controller {
     }
 
     public function index() {
+        $this->view->resultsData = $this->model->getResultData();
         $this->view->render("results/index");
     }
 
