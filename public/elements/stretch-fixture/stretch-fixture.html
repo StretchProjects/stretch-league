@@ -1,0 +1,85 @@
+<link rel="import" href="/bower_components/polymer/polymer.html"/>
+<link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
+
+
+<polymer-element name="stretch-fixture" attributes="heading fixtures">
+
+    <template>
+        <style>
+            table.data {
+    border-collapse: collapse;
+    border: 1px solid #41587c;
+    text-align: center;
+    width: 100%;
+}
+
+table.data td, table.data th {
+    padding: 6px;
+    border: 1px solid #41587c;
+    text-align: center;
+}
+
+table.data th {
+    background-color: #41587c;
+    color: white;
+}
+
+table.data tr:hover {
+    background-color: #edf1f6;
+}
+paper-shadow {
+    display: inline-block;
+    background: white;
+    box-sizing: border-box;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 2px;
+    min-width: 50%;
+    max-width: 90%;
+}
+a {
+    color: #41587c;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #ff6600;
+}
+
+        </style>
+
+        <paper-shadow>
+            <h3>{{heading}}</h3>
+            <table class="data">
+                <thead>
+                    <tr>
+                        <th>Home</th>
+                        <th>vs</th>
+                        <th>Away</th>
+                        <th>Kickoff</th>
+                        <th>Referee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <template repeat="{{f in fixtures}}">
+                    <tr>
+                        <td><a href="#">{{f.home_team_name}}</a></td>
+                        <td>vs</td>
+                        <td><a href="#">{{f.away_team_name}}</a></td>
+                        <td>{{f.fixture_time}}</td>
+                        <td>{{f.referee_name}}</td>
+                    </tr>
+                </template>
+                </tbody>
+            </table>
+        </paper-shadow>
+    </template>
+
+    <script>
+        Polymer('stretch-fixture', {
+            ready: function() {
+                this.fixtures = JSON.parse(decodeURIComponent(this.fixtures));
+            }
+        });
+    </script>
+</polymer-element>
