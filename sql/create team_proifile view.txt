@@ -1,0 +1,12 @@
+create view team_profile as
+select
+	team_name,
+    team_manager,
+    team_contact_number,
+    team_crest,
+    ground_name,
+    ground_address,
+    ground_capacity
+from
+	team
+	inner join ground on team.ground_id = ground.ground_id;

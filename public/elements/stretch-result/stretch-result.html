@@ -63,11 +63,11 @@ a:visited {
                 <tbody>
                 <template repeat="{{r in results}}">
                     <tr>
-                        <td><a href="#">{{r.home_team_name}}</a></td>
+                        <td><a href="/team/index/{{r.home_team_name}}">{{r.home_team_name}}</a></td>
                         <td>{{r.home_goals_for}}</td>
                         <td>vs</td>
                         <td>{{r.away_goals_for}}</td>
-                        <td><a href="#">{{r.away_team_name}}</a></td>
+                        <td><a href="/team/index/{{r.away_team_name}}">{{r.away_team_name}}</a></td>
                     </tr>
                 </template>
                 </tbody>

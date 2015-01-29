@@ -1,0 +1,89 @@
+<link rel="import" href="/bower_components/polymer/polymer.html"/>
+<link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
+
+
+<polymer-element name="stretch-result-profile" attributes="results">
+
+    <template>
+        <style>
+            table.data {
+                border-collapse: collapse;
+                border: 1px solid #41587c;
+                text-align: center;
+                width: 100%;
+            }
+
+            table.data td, table.data th {
+                padding: 6px;
+                border: 1px solid #41587c;
+                text-align: center;
+            }
+
+            table.data th {
+                background-color: #41587c;
+                color: white;
+            }
+
+            table.data tr:hover {
+                background-color: #edf1f6;
+            }
+            paper-shadow {
+                display: inline-block;
+                background: white;
+                box-sizing: border-box;
+                margin: 16px;
+                padding: 16px;
+                border-radius: 2px;
+                min-width: 50%;
+                max-width: 90%;
+            }
+            a {
+                color: #41587c;
+                text-decoration: none;
+            }
+
+            a:visited {
+                color: #ff6600;
+            }
+
+        </style>
+
+        <paper-shadow>
+            <h3>Results</h3>
+            <table class="data">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Home</th>
+                        <th>Score</th>
+                        <th>vs</th>
+                        <th>Score</th>
+                        <th>Away</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <template repeat="{{res in results}}">
+                    <template repeat="{{r in res}}">
+                        <tr>
+                            <td>{{r.fixture_date}}</td>
+                            <td><a href="/team/index/{{r.home_team_name}}">{{r.home_team_name}}</a></td>
+                            <td>{{r.home_goals_for}}</td>
+                            <td>vs</td>
+                            <td>{{r.away_goals_for}}</td>
+                            <td><a href="/team/index/{{r.away_team_name}}">{{r.away_team_name}}</a></td>
+                        </tr>
+                    </template>
+                </template>
+                </tbody>
+            </table>
+        </paper-shadow>
+    </template>
+
+    <script>
+        Polymer('stretch-result-profile', {
+            ready: function () {
+                this.results = JSON.parse(decodeURIComponent(this.results));
+            }
+        });
+    </script>
+</polymer-element>

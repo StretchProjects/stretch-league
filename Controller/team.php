@@ -6,7 +6,11 @@ class team extends Controller {
         parent::__construct();
     }
 
-    public function index() {
+    public function index($teamAlias = null) {
+        $this->view->teamData = $this->model->getTeamData($teamAlias);
+        $this->view->fixturesData = $this->model->getFixtureData();
+        $this->view->resultsData = $this->model->getResultData();
+        $this->view->playerData = $this->model->getPlayerData();
         $this->view->render("team/index");
     }
 

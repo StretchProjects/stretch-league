@@ -2,7 +2,7 @@
 <link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
 
 
-<polymer-element name="stretch-fixture" attributes="heading fixtures">
+<polymer-element name="stretch-fixture-profile" attributes="heading fixtures">
 
     <template>
         <style>
@@ -49,10 +49,11 @@ a:visited {
         </style>
 
         <paper-shadow>
-            <h3>{{heading}}</h3>
+            <h3>Fixtures</h3>
             <table class="data">
                 <thead>
                     <tr>
+                        <th>Date</th>
                         <th>Home</th>
                         <th>vs</th>
                         <th>Away</th>
@@ -61,8 +62,10 @@ a:visited {
                     </tr>
                 </thead>
                 <tbody>
-                <template repeat="{{f in fixtures}}">
+                <template repeat="{{fixs in fixtures}}">
+                <template repeat="{{f in fixs}}">
                     <tr>
+                        <td>{{f.fixture_date}}</td>
                         <td><a href="/team/index/{{f.home_team_name}}">{{f.home_team_name}}</a></td>
                         <td>vs</td>
                         <td><a href="/team/index/{{f.away_team_name}}">{{f.away_team_name}}</a></td>
@@ -70,13 +73,14 @@ a:visited {
                         <td>{{f.referee_name}}</td>
                     </tr>
                 </template>
+                </template>
                 </tbody>
             </table>
         </paper-shadow>
     </template>
 
     <script>
-        Polymer('stretch-fixture', {
+        Polymer('stretch-fixture-profile', {
             ready: function() {
                 this.fixtures = JSON.parse(decodeURIComponent(this.fixtures));
             }

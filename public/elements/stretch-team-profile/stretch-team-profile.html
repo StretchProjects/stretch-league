@@ -1,0 +1,71 @@
+<link rel="import" href="/bower_components/polymer/polymer.html"/>
+<link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
+
+
+<polymer-element name="stretch-team-profile" attributes="team_name team_manager team_contact_number team_crest ground_name ground_address ground_capacity">
+
+    <template>
+        <style>
+            paper-shadow {
+                display: inline-block;
+                background: white;
+                box-sizing: border-box;
+                margin: 16px;
+                padding: 16px;
+                border-radius: 2px;
+                min-width: 50%;
+                max-width: 90%;
+            }
+.leftalign {
+    text-align: left;
+}
+.teamlogo {
+    height: 150px;
+    width: 150px;
+    float: left;
+    margin-right: 8px;
+}
+
+.clearfix {
+         visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+}
+        </style>
+
+        <paper-shadow>
+            <h1>{{team_name}}</h1>
+            <img class="teamlogo" src="{{team_crest}}" alt="{{team_name}} logo">
+            <table class="leftalign">
+                <tr>
+                    <td>Manager:</td>
+                    <td>{{team_manager}}</td>
+                </tr>
+                <tr>
+                    <td>Ground name:</td>
+                    <td>{{ground_name}}</td>
+                </tr>
+                <tr>
+                    <td>Capacity:</td>
+                    <td>{{ground_capacity}}</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>{{ground_address}}</td>
+                </tr>
+                <tr>
+                    <td>Contact:</td>
+                    <td>{{team_contact_number}}</td>
+                </tr>
+            </table>
+            <span class="clearfix"></span>
+        </paper-shadow>
+    </template>
+
+    <script>
+        Polymer('stretch-team-profile', {});
+    </script>
+</polymer-element>
