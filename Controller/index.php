@@ -2,6 +2,8 @@
 
 class index extends Controller {
 
+    public $links = [];
+
     public function __construct() {
         parent::__construct();
     }
@@ -10,10 +12,5 @@ class index extends Controller {
         $this->view->tableData = $this->model->getTableData();
         $this->view->render("index/index");
     }
-
-    public function news() {
-        $this->view->render("index/news");
-    }
-
 
 }

@@ -2,6 +2,8 @@
 
 class results extends Controller {
 
+    public $links = ['input'=>'create'];
+
     public function __construct() {
         parent::__construct();
     }
@@ -14,6 +16,5 @@ class results extends Controller {
     public function input() {
         $this->view->render("results/input");
     }
-
 
 }

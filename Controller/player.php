@@ -2,6 +2,8 @@
 
 class player extends Controller {
 
+    public $links = [];
+
     public function __construct() {
         parent::__construct();
     }
