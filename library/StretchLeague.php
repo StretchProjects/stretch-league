@@ -34,4 +34,8 @@ class StretchLeague {
         return $this->db->select("SELECT * FROM goalscorers WHERE team_name LIKE '$where';");
     }
 
+    public function getTableData() {
+        return $this->db->select("SELECT * FROM fulltable;");
+    }
+
 }

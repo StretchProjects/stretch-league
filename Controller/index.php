@@ -7,6 +7,7 @@ class index extends Controller {
     }
 
     public function index() {
+        $this->view->tableData = $this->model->getTableData();
         $this->view->render("index/index");
     }
 
