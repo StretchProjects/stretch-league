@@ -17,4 +17,6 @@ select
             fixture_id = fix.fixture_id and
             team_id = away_team_id
     ) as away_score
-from fixture fix;
+from fixture fix
+where
+    fix.fixture_date < curdate() + 0;
