@@ -13,7 +13,11 @@ class results extends Controller {
         $this->view->render("results/index");
     }
 
-    public function input() {
+    public function input($referee_id = null) {
+        if (is_null($referee_id)) {
+             $this->view->render("index/index");
+        }
+        $this->view->resultsInputData = $this->model->getResultsInputData($referee_id);
         $this->view->render("results/input");
     }
 

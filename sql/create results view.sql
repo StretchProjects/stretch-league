@@ -5,7 +5,11 @@ select
     home_goals_for,
     away_goals_for,
     fixture_date,
-    fixture_time
+    fixture_time,
+    home_team.team_id as home_team_id,
+    away_team.team_id as away_team_id,
+    referee_id,
+    fixture.fixture_id
 from
     results_raw
     inner join team home_team on home_team.team_id = results_raw.home_team_id

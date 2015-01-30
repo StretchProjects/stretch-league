@@ -1,68 +1,18 @@
 <div tool>Referee input</div>
 
-        <paper-shadow class="card" z="1">
-            <h1>team name vs team name (07/01/2015 @ 15:00)</h1>
-            <form>
-                <table class="fullwidth">
-                    <tr>
-                        <td>
-                            <h2>Home team name</h2>
-                            <select>
-                                <option>-- none --</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option selected="selected">Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                            </select>
-                            <button>-</button>
-                            <button>+</button><br>
-                            <select>
-                                <option>-- none --</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                            </select>
-                            <button>-</button>
-                            <button>+</button>
-                        </td>
-                        <td>
-                            <button class="centeraligned" type="submit">Submit</button>
-                        </td>
-                        <td>
-                            <h2>Away team name</h2>
-                            <select>
-                                <option>-- none --</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                                <option>Joe Bloggs</option>
-                            </select>
-                            <button>-</button>
-                            <button>+</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><p class="score">1</p></td>
-                        <td></td>
-                        <td><p class="score">0</p></td>
-                    </tr>
-                </table>
+<link rel="import" href="/public/elements/stretch-result-input/stretch-result-input.html">
 
-            </form>
-        </paper-shadow>
+<?php
+for ($i = 0; $i < count($this->resultsInputData); $i++){
+    ?>
+<stretch-result-input home_team_name="<?php echo $this->resultsInputData[$i]['home_team_name']; ?>"
+                      away_team_name="<?php echo $this->resultsInputData[$i]['away_team_name']; ?>"
+                      fixture_date="<?php echo $this->resultsInputData[$i]['fixture_date']; ?>"
+                      fixture_time="<?php echo $this->resultsInputData[$i]['fixture_time']; ?>"
+                      players="<?php echo rawurlencode(json_encode($this->resultsInputData[$i]['players'])); ?>">
+</stretch-result-input>
+
+<?php
+}
+
+?>

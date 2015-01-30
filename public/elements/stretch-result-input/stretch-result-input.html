@@ -1,0 +1,78 @@
+<link rel="import" href="/bower_components/polymer/polymer.html"/>
+<link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
+
+
+<polymer-element name="stretch-result-input" attributes="home_team_name away_team_name fixture_date fixture_time players">
+
+    <template>
+        <style>
+            paper-shadow {
+                display: inline-block;
+                background: white;
+                box-sizing: border-box;
+                margin: 16px;
+                padding: 16px;
+                border-radius: 2px;
+                min-width: 50%;
+                max-width: 90%;
+            }
+            table.fullwidth {
+                width: 100%;
+            }
+            table.fullwidth td {
+                width: 33%;
+            }
+        </style>
+
+        <paper-shadow>
+            <h1>{{home_team_name}} vs {{away_team_name}} ({{fixture_date}} @ {{fixture_time}})</h1>
+
+            <table class="fullwidth">
+                <tr>
+                    <td>{{home_team_name}}</td>
+                    <td></td>
+                    <td>{{away_team_name}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <select>
+                            <option> -- No selection -- </option>
+                            <template repeat="{{player in players}}">
+                                <option id="{{player.player_id}}}">{{player.player_name}}</option>
+                            </template>
+                        </select>
+                        <button type="button">-</button>
+                        <button type="button">+</button>
+                    </td>
+                    <td><button class="centeraligned" type="submit">Submit</button></td>
+                    <td>
+                        <select>
+                            <option> -- No selection -- </option>
+                            <template repeat="{{player in players}}">
+                                <option id="{{player.player_id}}}">{{player.player_name}}</option>
+                            </template>
+                        </select>
+                        <button type="button">-</button>
+                        <button type="button">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span id="home_team_goals"></span></td>
+                    <td></td>
+                    <td><span id="away_team_goals"></span></td>
+                </tr>
+            </table>
+
+
+
+        </paper-shadow>
+    </template>
+
+    <script>
+        Polymer('stretch-result-input', {
+            ready: function () {
+                this.players = JSON.parse(decodeURIComponent(this.players));
+            }
+        });
+    </script>
+</polymer-element>

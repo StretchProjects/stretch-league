@@ -38,4 +38,15 @@ class StretchLeague {
         return $this->db->select("SELECT * FROM fulltable;");
     }
 
+    public function getResultsInputData($referee_id = '%') {
+        $results = $this->db->select("SELECT home_team_name, away_team_name, DATE_FORMAT(fixture_date, '%e %M %Y') as fixture_date, fixture_time, fixture_id FROM results WHERE referee_id LIKE :referee_id AND fixture_date > curdate() - 5;", [':referee_id' => $referee_id]);
+
+        for ($i = 0; $i < count($results); $i++) {
+            $results[$i]['players'] = $this->db->select("SELECT * FROM team_player_name WHERE fixture_id = 1" . ';');/*$results[$i]['fixture_id'] - Using fixture_id = 1 for testing */
+        }
+
+
+        return $results;
+    }
+
 }
