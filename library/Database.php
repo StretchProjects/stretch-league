@@ -14,7 +14,7 @@ class Database extends PDO {
         }
 
         if (!$query->execute()) {
-            require_once ControllerFolder . 'error.php';
+            require_once CONTROLLER_FOLDER . 'error.php';
             $e = new error();
             $e->index();
             return;
@@ -34,7 +34,7 @@ class Database extends PDO {
         }
 
         if (!$query->execute()) {
-            require_once ControllerFolder . 'error.php';
+            require_once CONTROLLER_FOLDER . 'error.php';
             $e = new error();
             $e->index();
             return;
@@ -58,7 +58,7 @@ class Database extends PDO {
         }
 
         if (!$query->execute()) {
-            require_once ControllerFolder . 'error.php';
+            require_once CONTROLLER_FOLDER . 'error.php';
             $e = new error();
             $e->index();
             return false;
