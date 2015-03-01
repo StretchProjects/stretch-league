@@ -44,8 +44,16 @@ class StretchLeague {
         for ($i = 0; $i < count($results); $i++) {
             $results[$i]['players'] = $this->db->select("SELECT * FROM team_player_name WHERE fixture_id = 1" . ';');/*$results[$i]['fixture_id'] - Using fixture_id = 1 for testing */
         }
+        return $results;
+    }
 
+    public function getTeamIdFromName($teamname = '') {
+        $results = $this->db->select("SELECT team_id FROM team WHERE team_name=:team_name;", array(':team_name'=> $teamname));
+        return $results[0]['team_id'];
+    }
 
+    public function getGoalscorerData($fixture_id) {
+        $results = $this->db->select("SELECT player_id, team_id FROM goalscorer WHERE fixture_id=:fixture_id;", array(':fixture_id'=> $fixture_id));
         return $results;
     }
 
