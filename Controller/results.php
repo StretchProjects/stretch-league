@@ -17,11 +17,6 @@ class results extends Controller {
         if (is_null($referee_id)) {
              $this->view->render("index/index");
         }
-
-        if (filter_input(INPUT_POST, 'run') !== null) {
-            //try to input data
-            $this->model->updateResultsInputData();
-        }
         $this->view->resultsInputData = $this->model->getResultsInputData($referee_id);
         $this->view->render("results/input");
     }
