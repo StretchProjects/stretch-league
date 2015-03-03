@@ -2,7 +2,7 @@
 <link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
 
 
-<polymer-element name="stretch-result-input" attributes="home_team_name away_team_name fixture_date fixture_time players">
+<polymer-element name="stretch-result-input" attributes="home_team_name away_team_name fixture_date fixture_time fixture_id">
 
     <template>
         <style>
@@ -26,45 +26,13 @@
 
         <paper-shadow>
             <h1>{{home_team_name}} vs {{away_team_name}} ({{fixture_date}} @ {{fixture_time}})</h1>
-
             <table class="fullwidth">
                 <tr>
                     <td>{{home_team_name}}</td>
-                    <td></td>
                     <td>{{away_team_name}}</td>
                 </tr>
-                <tr>
-                    <td>
-                        <select>
-                            <option> -- No selection -- </option>
-                            <template repeat="{{player in players}}">
-                                <option id="{{player.player_id}}}">{{player.player_name}}</option>
-                            </template>
-                        </select>
-                        <button type="button">-</button>
-                        <button type="button">+</button>
-                    </td>
-                    <td><button class="centeraligned" type="submit">Submit</button></td>
-                    <td>
-                        <select>
-                            <option> -- No selection -- </option>
-                            <template repeat="{{player in players}}">
-                                <option id="{{player.player_id}}}">{{player.player_name}}</option>
-                            </template>
-                        </select>
-                        <button type="button">-</button>
-                        <button type="button">+</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span id="home_team_goals"></span></td>
-                    <td></td>
-                    <td><span id="away_team_goals"></span></td>
-                </tr>
             </table>
-
-
-
+                <content select="table"></content>
         </paper-shadow>
     </template>
 

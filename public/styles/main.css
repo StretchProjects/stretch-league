@@ -100,3 +100,7 @@ button.centeraligned {
 p.score {
     font-size: 3em;
 }
+
+.primary-button {
+    background-color: #5264ae;
+}
