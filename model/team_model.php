@@ -5,9 +5,11 @@ class team_model extends Model {
     private $db;
     private $_allTeams;
     private $_teamName;
+    private $sl;
 
     public function __construct() {
         $this->db = new Database();
+        $this->sl = new StretchLeague();
     }
 
     private function _getAllTeams() {
@@ -35,18 +37,27 @@ class team_model extends Model {
     }
 
     public function getPlayerData() {
-        $sl = new StretchLeague();
-        return $sl->getPlayerData($this->_teamName);
+        return $this->sl->getPlayerData($this->_teamName);
     }
 
     public function getFixtureData() {
-        $sl = new StretchLeague();
-        return $sl->getFixtureData($this->_teamName);
+        return $this->sl->getFixtureData($this->_teamName);
     }
 
     public function getResultData() {
-                $sl = new StretchLeague();
-        return $sl->getResultData($this->_teamName);
+        return $this->sl->getResultData($this->_teamName);
+    }
+
+    public function updateTeamInputData() {
+        $team_id = $this->sl->getTeamIdFromName(filter_input(INPUT_POST, 'team_name'));
+        $team_crest = filter_input(INPUT_POST, 'team_crest');
+        $team_manager = filter_input(INPUT_POST, 'team_manager');
+        $ground_name = filter_input(INPUT_POST, 'ground_name');
+        $ground_capacity = filter_input(INPUT_POST, 'ground_capacity');
+        $ground_address = filter_input(INPUT_POST, 'ground_address');
+        $team_contact_number = filter_input(INPUT_POST, 'team_contact_number');
+
+        $this->sl->updateTeamData($team_id, $team_crest, $team_manager, $ground_name, $ground_capacity, $ground_address, $team_contact_number);
     }
 
 }

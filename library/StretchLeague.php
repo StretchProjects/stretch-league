@@ -48,17 +48,16 @@ class StretchLeague {
     }
 
     public function getTeamIdFromName($teamname = '') {
-        $results = $this->db->select("SELECT team_id FROM team WHERE team_name=:team_name;", array(':team_name'=> $teamname));
+        $results = $this->db->select("SELECT team_id FROM team WHERE team_name=:team_name;", array(':team_name' => $teamname));
         return $results[0]['team_id'];
     }
 
     public function getGoalscorerData($fixture_id) {
-        $teams = $this->db->select("SELECT home_team_id, away_team_id FROM fixture WHERE fixture_id=:fixture_id;", array(':fixture_id'=> $fixture_id));
-        $results['home'] = $this->db->select("SELECT player_id, team_id FROM goalscorer WHERE fixture_id=:fixture_id AND team_id=:team_id;", array(':fixture_id'=> $fixture_id, ':team_id'=>$teams[0]['home_team_id']));
-        $results['away'] = $this->db->select("SELECT player_id, team_id FROM goalscorer WHERE fixture_id=:fixture_id AND team_id=:team_id;", array(':fixture_id'=> $fixture_id, ':team_id'=>$teams[0]['away_team_id']));
+        $teams = $this->db->select("SELECT home_team_id, away_team_id FROM fixture WHERE fixture_id=:fixture_id;", array(':fixture_id' => $fixture_id));
+        $results['home'] = $this->db->select("SELECT player_id, team_id FROM goalscorer WHERE fixture_id=:fixture_id AND team_id=:team_id;", array(':fixture_id' => $fixture_id, ':team_id' => $teams[0]['home_team_id']));
+        $results['away'] = $this->db->select("SELECT player_id, team_id FROM goalscorer WHERE fixture_id=:fixture_id AND team_id=:team_id;", array(':fixture_id' => $fixture_id, ':team_id' => $teams[0]['away_team_id']));
         return $results;
     }
-
 
     public function insertGoalscorer($team_id, $fixture_id, $player_id) {
         return $this->db->insert('goalscorer', array(
@@ -70,6 +69,22 @@ class StretchLeague {
 
     public function deleteGoalscorer($team_id, $fixture_id, $player_id) {
         return $this->db->delete('goalscorer', 'team_id=' . $team_id . ' and player_id=' . $player_id . ' and fixture_id=' . $fixture_id);
+    }
+
+    public function updateTeamData($team_id, $team_crest, $team_manager, $ground_name, $ground_capacity, $ground_address, $team_contact_number) {
+        $this->db->update('team', array(
+            'team_crest' => $team_crest,
+            'team_manager' => $team_manager,
+            'team_contact_number' => $team_contact_number
+                ), 'team_id=' . $team_id);
+
+        $ground_id = $this->db->select('SELECT ground_id FROM team WHERE team_id=' . $team_id . ' LIMIT 1;');
+
+        $this->db->update('ground', array(
+            'ground_name' => $ground_name,
+            'ground_capacity' => $ground_capacity,
+            'ground_address' => $ground_address
+                ), 'ground_id=' . $ground_id[0]['ground_id']);
     }
 
 }

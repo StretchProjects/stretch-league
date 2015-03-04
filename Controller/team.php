@@ -2,7 +2,7 @@
 
 class team extends Controller {
 
-    public $links = ['selection'=>'input'];
+    public $links = ['selection' => 'input'];
 
     public function __construct() {
         parent::__construct();
@@ -16,10 +16,17 @@ class team extends Controller {
         $this->view->render("team/profile");
     }
 
+    public function edit($teamAlias = null) {
+        if (filter_input(INPUT_POST, 'run') !== null) {
+            //try to input data
+            $this->model->updateTeamInputData();
+        }
+        $this->view->teamData = $this->model->getTeamData($teamAlias);
+        $this->view->render("team/edit");
+    }
+
     public function selection() {
         $this->view->render("team/selection");
     }
-
-
 
 }
