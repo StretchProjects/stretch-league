@@ -98,4 +98,15 @@ class StretchLeague {
                 ), 'referee_id=' . $refereeId);
     }
 
+    public function getPlayerEditData($playerId) {
+        $referee = $this->db->select('SELECT player_id, player_name FROM player WHERE player_id=' . $playerId . ' LIMIT 1;');
+        return $referee[0];
+    }
+
+    public function updatePlayerData($playerId, $playerName) {
+        $this->db->update('player', array(
+            'player_name' => $playerName
+                ), 'player_id=' . $playerId);
+    }
+
 }

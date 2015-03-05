@@ -13,8 +13,8 @@ class referee_model extends Model {
     }
 
     public function updateRefereeData() {
-        $refereeId = filter_input(INPUT_POST, 'referee_id');
-        $refereeName = filter_input(INPUT_POST, 'referee_name');
+        $refereeId = filter_input(INPUT_POST, 'person_id');
+        $refereeName = filter_input(INPUT_POST, 'person_name');
 
         $this->sl->updateRefereeData($refereeId, $refereeName);
     }

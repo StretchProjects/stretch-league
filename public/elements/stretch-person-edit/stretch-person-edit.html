@@ -1,0 +1,53 @@
+<link rel="import" href="/bower_components/polymer/polymer.html"/>
+<link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
+<link rel="import" href="/bower_components/paper-input/paper-input.html"/>
+<link rel="import" href="/bower_components/core-field/core-field.html"/>
+
+
+<polymer-element name="stretch-person-edit" attributes="person_id person_name">
+
+    <template>
+        <style>
+            paper-shadow {
+                display: inline-block;
+                background: white;
+                box-sizing: border-box;
+                margin: 16px;
+                padding: 16px;
+                border-radius: 2px;
+                min-width: 50%;
+                max-width: 90%;
+            }
+
+            .teamlogo {
+                height: 150px;
+                width: 150px;
+            }
+
+            paper-input {
+                width: 100%;
+            }
+
+        </style>
+
+        <paper-shadow>
+            <form action="#" id="mainForm" method="POST">
+                <input type="hidden" name="run" value="true">
+                <input type="hidden" name="person_id" value="{{person_id}}">
+                <input type="hidden" name="person_name" value="{{person_name}}">
+                <h1>{{person_name}}</h1>
+
+                <core-field>
+                    <paper-input name="person_name" label="Name" value="{{person_name}}" floatingLabel>
+                    </paper-input>
+                </core-field>
+
+                <button typ="submit">Save</button>
+            </form>
+        </paper-shadow>
+    </template>
+
+    <script>
+        Polymer('stretch-person-edit', {});
+    </script>
+</polymer-element>
