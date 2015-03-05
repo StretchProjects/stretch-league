@@ -1,4 +1,4 @@
-<div tool>Profile</div>
+<div tool>Edit team profile</div>
 
 <link rel="import" href="/public/elements/stretch-team-profile-edit/stretch-team-profile-edit.html">
 <stretch-team-profile-edit

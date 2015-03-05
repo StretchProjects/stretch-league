@@ -1,0 +1,53 @@
+<link rel="import" href="/bower_components/polymer/polymer.html"/>
+<link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
+<link rel="import" href="/bower_components/paper-input/paper-input.html"/>
+<link rel="import" href="/bower_components/core-field/core-field.html"/>
+
+
+<polymer-element name="stretch-referee-edit" attributes="referee_id referee_name">
+
+    <template>
+        <style>
+            paper-shadow {
+                display: inline-block;
+                background: white;
+                box-sizing: border-box;
+                margin: 16px;
+                padding: 16px;
+                border-radius: 2px;
+                min-width: 50%;
+                max-width: 90%;
+            }
+
+            .teamlogo {
+                height: 150px;
+                width: 150px;
+            }
+
+            paper-input {
+                width: 100%;
+            }
+
+        </style>
+
+        <paper-shadow>
+            <form action="#" id="mainForm" method="POST">
+                <input type="hidden" name="run" value="true">
+                <input type="hidden" name="referee_id" value="{{referee_id}}">
+                <input type="hidden" name="referee_name" value="{{referee_name}}">
+                <h1>{{referee_name}}</h1>
+
+                <core-field>
+                    <paper-input name="referee_name" label="Referee's name" value="{{referee_name}}" floatingLabel>
+                    </paper-input>
+                </core-field>
+
+                <button typ="submit">Save</button>
+            </form>
+        </paper-shadow>
+    </template>
+
+    <script>
+        Polymer('stretch-referee-edit', {});
+    </script>
+</polymer-element>
