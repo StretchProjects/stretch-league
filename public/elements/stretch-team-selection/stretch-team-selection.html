@@ -2,7 +2,7 @@
 <link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
 
 
-<polymer-element name="stretch-team-selection" attributes="home_team_name away_team_name fixture_date fixture_time available_players selected_players">
+<polymer-element name="stretch-team-selection" attributes="home_team_name away_team_name fixture_date fixture_time available_players selected_players fixture_id team_id">
 
     <template>
         <style>
@@ -20,42 +20,45 @@
                 width: 100%;
             }
         </style>
+        <form action="#" method="POST">
+            <input type="hidden" name="fixture_id" value="{{fixture_id}}">
+            <input type="hidden" name="team_id" value="{{team_id}}">
+            <paper-shadow>
+                <h1>{{home_team_name}} vs {{away_team_name}} ({{fixture_date}} @ {{fixture_time}})</h1>
 
-        <paper-shadow>
-            <h1>{{home_team_name}} vs {{away_team_name}} ({{fixture_date}} @ {{fixture_time}})</h1>
-
-            <table class="fullwidth">
-                <tr>
-                    <td><h3>Available</h3></td>
-                    <td></td>
-                    <td><h3>Selected</h3></td>
-                </tr>
-                <tr>
-                    <td>
-                        <select multiple>
-                            <template repeat="{{player in available_players}}">
-                                <option value="{{player.player_id}}">{{player.player_name}}</option>
-                            </template>
-                        </select>
-                    </td>
-                    <td>
-                        <div><button type="submit">&gt;&gt;</button></div><br/>
-                        <div><button type="submit">&lt;&lt;</button></div>
-                    </td>
-                    <td>
-                        <select multiple>
-                            <template repeat="{{player in selected_players}}">
-                                <option value="{{player.player_id}}">{{player.player_name}}</option>
-                            </template>
-                        </select></td>
-                </tr>
-            </table>
-        </paper-shadow>
+                <table class="fullwidth">
+                    <tr>
+                        <td><h3>Available</h3></td>
+                        <td></td>
+                        <td><h3>Selected</h3></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="available_players" multiple>
+                                <template repeat="{{player in available_players}}">
+                                    <option value="{{player.player_id}}">{{player.player_name}}</option>
+                                </template>
+                            </select>
+                        </td>
+                        <td>
+                            <div><button name="run" value="select" type="submit">&gt;&gt;</button></div><br/>
+                            <div><button name="run" value="deselect" type="submit">&lt;&lt;</button></div>
+                        </td>
+                        <td>
+                            <select name="selected_players" multiple>
+                                <template repeat="{{player in selected_players}}">
+                                    <option value="{{player.player_id}}">{{player.player_name}}</option>
+                                </template>
+                            </select></td>
+                    </tr>
+                </table>
+            </paper-shadow>
+        </form>
     </template>
 
     <script>
         Polymer('stretch-team-selection', {
-            ready: function() {
+            ready: function () {
                 this.available_players = JSON.parse(decodeURIComponent(this.available_players));
                 this.selected_players = JSON.parse(decodeURIComponent(this.selected_players));
             }

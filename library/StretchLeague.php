@@ -112,8 +112,21 @@ class StretchLeague {
     public function getTeamSelectionData($teamId) {
         $data = $this->db->select("SELECT fixture_id, home_team_name, away_team_name, DATE_FORMAT(fixture_date, '%e %M %Y') as fixture_date, fixture_time FROM fixtures WHERE home_team_id=" . $teamId . ' OR away_team_id=' . $teamId . ' LIMIT 1;');
         $data[0]['team_players'] = $this->db->select("SELECT player.player_id, player.player_name FROM player INNER JOIN team_player ON team_player.player_id = player.player_id WHERE team_id=" . $teamId . ';');
+        $data[0]['team_id'] = $teamId;
         $data[0]['selected_players'] = $this->db->select("SELECT player.player_id, player.player_name FROM player INNER JOIN fixture_player ON fixture_player.player_id = player.player_id WHERE team_id=" . $teamId . ' AND fixture_id=' . $data[0]['fixture_id'] . ';');
         return $data[0];
+    }
+
+    public function insertFixturePlayer($player_id, $fixture_id, $team_id) {
+        return $this->db->insert('fixture_player', array(
+                    'team_id' => $team_id,
+                    'player_id' => $player_id,
+                    'fixture_id' => $fixture_id
+        ));
+    }
+
+    public function removeFixturePlayer($player_id, $fixture_id, $team_id) {
+        return $this->db->delete('fixture_player', 'team_id=' . $team_id . ' and player_id=' . $player_id . ' and fixture_id=' . $fixture_id);
     }
 
 }

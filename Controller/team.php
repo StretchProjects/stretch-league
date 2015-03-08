@@ -26,6 +26,10 @@ class team extends Controller {
     }
 
     public function selection($teamAlias) {
+        if (filter_input(INPUT_POST, 'run') !== null) {
+            //try to input data
+            $this->model->updateTeamSelectionData();
+        }
         $this->view->teamSelectionData = $this->model->getTeamSelectionData($teamAlias);
         $this->view->render("team/selection");
     }

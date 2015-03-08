@@ -80,4 +80,22 @@ class team_model extends Model {
         return $data;
     }
 
+    public function updateTeamSelectionData() {
+        $run = filter_input(INPUT_POST, 'run');
+        $fixture_id = filter_input(INPUT_POST, 'fixture_id');
+        $team_id = filter_input(INPUT_POST, 'team_id');
+
+        if ($run == 'select') {
+            $player_id = filter_input(INPUT_POST, 'available_players');
+            if (!is_null($player_id) && !is_null($fixture_id) && !is_null($team_id)) {
+                $this->sl->insertFixturePlayer($player_id, $fixture_id, $team_id);
+            }
+        } else if ($run == 'deselect') {
+            $player_id = filter_input(INPUT_POST, 'selected_players');
+            if (!is_null($player_id) && !is_null($fixture_id) && !is_null($team_id)) {
+                $this->sl->removeFixturePlayer($player_id, $fixture_id, $team_id);
+            }
+        }
+    }
+
 }
