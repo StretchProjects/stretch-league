@@ -1,10 +1,11 @@
 <link rel="import" href="/bower_components/polymer/polymer.html"/>
 <link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
 
-
 <polymer-element name="stretch-result-input" attributes="home_team_name away_team_name fixture_date fixture_time fixture_id">
 
     <template>
+        <link href="/public/styles/main.css" rel="stylesheet" type="text/css"/>
+
         <style>
             paper-shadow {
                 display: inline-block;
@@ -15,12 +16,6 @@
                 border-radius: 2px;
                 min-width: 50%;
                 max-width: 90%;
-            }
-            table.fullwidth {
-                width: 100%;
-            }
-            table.fullwidth td {
-                width: 33%;
             }
         </style>
 

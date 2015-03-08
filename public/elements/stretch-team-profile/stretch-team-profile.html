@@ -1,10 +1,11 @@
 <link rel="import" href="/bower_components/polymer/polymer.html"/>
 <link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
 
-
 <polymer-element name="stretch-team-profile" attributes="team_name team_manager team_contact_number team_crest ground_name ground_address ground_capacity">
 
     <template>
+        <link href="/public/styles/main.css" rel="stylesheet" type="text/css"/>
+
         <style>
             paper-shadow {
                 display: inline-block;
@@ -16,24 +17,6 @@
                 min-width: 50%;
                 max-width: 90%;
             }
-.leftalign {
-    text-align: left;
-}
-.teamlogo {
-    height: 150px;
-    width: 150px;
-    float: left;
-    margin-right: 8px;
-}
-
-.clearfix {
-         visibility: hidden;
-     display: block;
-     font-size: 0;
-     content: " ";
-     clear: both;
-     height: 0;
-}
         </style>
 
         <paper-shadow>

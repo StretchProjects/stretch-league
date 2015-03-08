@@ -4,10 +4,11 @@
 <link rel="import" href="/bower_components/paper-fab/paper-fab.html"/>
 <link rel="import" href="/bower_components/core-field/core-field.html"/>
 
-
 <polymer-element name="stretch-team-profile-edit" attributes="team_name team_manager team_contact_number team_crest ground_name ground_address ground_capacity">
 
     <template>
+        <link href="/public/styles/main.css" rel="stylesheet" type="text/css"/>
+
         <style>
             paper-shadow {
                 display: inline-block;
@@ -20,15 +21,9 @@
                 max-width: 90%;
             }
 
-            .teamlogo {
-                height: 150px;
-                width: 150px;
-            }
-
             paper-input {
                 width: 100%;
             }
-
         </style>
 
         <paper-shadow>

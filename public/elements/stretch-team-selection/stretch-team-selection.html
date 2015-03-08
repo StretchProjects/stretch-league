@@ -1,10 +1,11 @@
 <link rel="import" href="/bower_components/polymer/polymer.html"/>
 <link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
 
-
 <polymer-element name="stretch-team-selection" attributes="home_team_name away_team_name fixture_date fixture_time available_players selected_players fixture_id team_id">
 
     <template>
+        <link href="/public/styles/main.css" rel="stylesheet" type="text/css"/>
+
         <style>
             paper-shadow {
                 display: inline-block;
@@ -16,10 +17,8 @@
                 min-width: 50%;
                 max-width: 90%;
             }
-            .fullwidth {
-                width: 100%;
-            }
         </style>
+
         <form action="#" method="POST">
             <input type="hidden" name="fixture_id" value="{{fixture_id}}">
             <input type="hidden" name="team_id" value="{{team_id}}">
