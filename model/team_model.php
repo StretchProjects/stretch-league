@@ -60,4 +60,24 @@ class team_model extends Model {
         $this->sl->updateTeamData($team_id, $team_crest, $team_manager, $ground_name, $ground_capacity, $ground_address, $team_contact_number);
     }
 
+    public function getTeamSelectionData($teamAlias) {
+        $data = $this->sl->getTeamSelectionData($teamAlias);
+        $data['available_players'] = array();
+
+        for ($i = 0; $i < count($data['team_players']); $i++) {
+            $include = true;
+            for ($j = 0; $j < count($data['selected_players']); $j++) {
+                if ($data['team_players'][$i]['player_id'] == $data['selected_players'][$j]['player_id']) {
+                    $include = false;
+                    break;
+                }
+            }
+            if ($include) {
+                array_push($data['available_players'], $data['team_players'][$i]);
+            }
+        }
+
+        return $data;
+    }
+
 }

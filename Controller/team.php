@@ -25,7 +25,8 @@ class team extends Controller {
         $this->view->render("team/edit");
     }
 
-    public function selection() {
+    public function selection($teamAlias) {
+        $this->view->teamSelectionData = $this->model->getTeamSelectionData($teamAlias);
         $this->view->render("team/selection");
     }
 

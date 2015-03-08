@@ -1,0 +1,64 @@
+<link rel="import" href="/bower_components/polymer/polymer.html"/>
+<link rel="import" href="/bower_components/paper-shadow/paper-shadow.html"/>
+
+
+<polymer-element name="stretch-team-selection" attributes="home_team_name away_team_name fixture_date fixture_time available_players selected_players">
+
+    <template>
+        <style>
+            paper-shadow {
+                display: inline-block;
+                background: white;
+                box-sizing: border-box;
+                margin: 16px;
+                padding: 16px;
+                border-radius: 2px;
+                min-width: 50%;
+                max-width: 90%;
+            }
+            .fullwidth {
+                width: 100%;
+            }
+        </style>
+
+        <paper-shadow>
+            <h1>{{home_team_name}} vs {{away_team_name}} ({{fixture_date}} @ {{fixture_time}})</h1>
+
+            <table class="fullwidth">
+                <tr>
+                    <td><h3>Available</h3></td>
+                    <td></td>
+                    <td><h3>Selected</h3></td>
+                </tr>
+                <tr>
+                    <td>
+                        <select multiple>
+                            <template repeat="{{player in available_players}}">
+                                <option value="{{player.player_id}}">{{player.player_name}}</option>
+                            </template>
+                        </select>
+                    </td>
+                    <td>
+                        <div><button type="submit">&gt;&gt;</button></div><br/>
+                        <div><button type="submit">&lt;&lt;</button></div>
+                    </td>
+                    <td>
+                        <select multiple>
+                            <template repeat="{{player in selected_players}}">
+                                <option value="{{player.player_id}}">{{player.player_name}}</option>
+                            </template>
+                        </select></td>
+                </tr>
+            </table>
+        </paper-shadow>
+    </template>
+
+    <script>
+        Polymer('stretch-team-selection', {
+            ready: function() {
+                this.available_players = JSON.parse(decodeURIComponent(this.available_players));
+                this.selected_players = JSON.parse(decodeURIComponent(this.selected_players));
+            }
+        });
+    </script>
+</polymer-element>
